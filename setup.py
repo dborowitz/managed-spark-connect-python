@@ -31,9 +31,16 @@ setup(
     install_requires=[
         "google-api-core>=2.19",
         "google-cloud-dataproc>=5.18",
+        "google-colabsqlviz>=0.3.0",
+        # Imported directly by managed_spark_connect._ipython and
+        # managed_spark_magics; previously these only arrived transitively via
+        # google-colabsqlviz and sparksql-magic.
+        "ipython>=8.0",
         "packaging>=20.0",
         "pyspark[connect]~=4.0.0",
+        "sparksql-magic>=0.0.3",
         "tqdm>=4.67",
+        "traitlets>=5.1",
         "websockets>=14.0",
     ],
 )

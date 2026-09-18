@@ -39,27 +39,14 @@ env \
   pytest --tb=auto -v
 ```
 
-## Testing with Magic Support
+## Testing the Notebook Extras
 
-To run tests with magic functionality, install the required dependencies manually:
-
-```sh
-pip install .
-pip install IPython sparksql-magic
-```
-
-Then run tests as normal. Any magic-related tests will automatically detect and use the available dependencies.
-
-## Testing without Magic Support
-
-To run tests without the magic dependencies, simply install the base package:
-
-```sh
-pip install .
-pytest
-```
-
-Tests that require magic functionality will be automatically skipped if the dependencies are not available.
+The notebook extras (`explore_dataframe`, `%dpip`, `%%sparksql`) are regular
+`install_requires` dependencies, so `pip install .` is enough and there is no
+"without magic support" configuration to test. The tests in
+`tests/unit/test_init.py` assume `google-colabsqlviz`, `sparksql-magic`,
+`ipython` and `traitlets` are importable and will fail, not skip, if they are
+not.
 
 The integration tests in particular can take a while to run. To speed up the
 testing cycle, you can run them in parallel. You can do so using the `xdist`

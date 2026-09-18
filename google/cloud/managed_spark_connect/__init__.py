@@ -14,6 +14,10 @@
 import importlib.metadata
 import warnings
 
+from ._ipython import (
+    ManagedSparkConnect,
+    _init_extras,
+)
 from .session import ManagedSparkSession
 
 old_package_names = ["google-spark-connect", "dataproc-spark-connect"]
@@ -28,3 +32,5 @@ for old_package_name in old_package_names:
         )
     except Exception:
         pass
+
+_init_extras()
